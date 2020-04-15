@@ -1,0 +1,181 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Inter|Alegreya+Sans');
+
+body {
+  font-family: Inter, sans;
+}
+
+/*----- HEADER -----*/
+
+.ant-layout header {
+  font-size: 1.6rem;
+  height: 10vh;
+  min-height: 60px;
+  background-color: #3b6da4;
+  color: #f3cb7e;
+  font-family: Alegreya Sans;
+  border-bottom: 4px solid lightgrey;
+}
+
+.ant-layout header .header-logo {
+  height: 9.2vh;
+  min-height: 40px;
+}
+
+.ant-layout header .header-title { 
+  margin-left: .5rem;
+}
+
+.ant-layout header .header-title .title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  position: absolute;
+  margin-top: -.7rem;
+}
+
+.ant-layout header .header-title .subtitle {
+  position: absolute;
+  margin-top: .8rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.ant-layout header .header-user {
+  font-size: 1rem;
+}
+
+.ant-layout header .header-user .username {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  margin-top: -.7rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.ant-layout header .header-user .logout {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  margin-top: .8rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ant-layout section {
+  font-size: 1.2rem;
+}
+
+/*----- SIDER -----*/
+
+.ant-layout aside, .ant-layout main {
+  padding: .8rem;
+  min-height: 82vh;
+}
+
+/*----- CONTENT -----*/
+
+.page-header {
+  width: 100%;
+  text-align: center;
+  font-family: Alegreya Sans;
+  font-weight: 700;
+  color: #021f70;
+}
+
+.page-header.alert {
+  font-size: 1.1rem;
+  color: #e44d15;
+}
+
+.notification {
+  font-style: italic;
+}
+
+/*----- FOOTER -----*/
+
+.ant-layout-footer {
+  padding: 1rem 2rem;
+}
+
+.ant-layout footer {
+  background-color: #e0edd9;
+  color: #916000;
+  font-family: Alegreya Sans;
+  font-size: 1rem;
+  height: 8vh;
+  min-height: 50px;
+  text-align: center;
+}
+
+/*----- TABLE -----*/
+.ant-table thead > tr > th {
+  font-weight: 900;
+  font-family: Alegreya Sans;
+}
+
+/*----- FORM -----*/
+
+.ant-form-item-label > label.ant-form-item-required::before,
+.ant-form-item-has-error .ant-form-item-explain {
+  color: #ff8100;
+}
+
+.ant-form-item-has-error .ant-input {
+  border-color: #ff8100;
+}
+
+.page-header .entry-name {
+  color: cornflowerblue;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.entry-name.new-entry {
+  color: forestgreen;
+}
+
+/*----- CONTROLS -----*/
+.control-button {
+  padding: 0 .3rem;
+  font-family: Alegreya Sans;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.create-button {
+  border-color: forestgreen;
+  color: forestgreen;
+}
+
+.create-button:hover, .create-button:focus {
+  border-color: #17c517;
+  color: #17c517;
+}
+
+.edit-button {
+  border-color: cornflowerblue;
+  color: cornflowerblue;
+}
+
+.edit-button:hover, .edit-button:focus {
+  border-color: #064fd2;
+  color: #064fd2;
+}
+
+.delete-button {
+  border-color: coral;
+  color: coral;
+  margin-left: .3rem;
+}
+
+.delete-button:hover, .delete-button:focus {
+  border-color: #e44d15;
+  color: #e44d15;
+}
+
+.disabled-button {
+  border-color: lightgrey;
+  color: lightgrey;
+}

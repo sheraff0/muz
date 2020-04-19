@@ -6,6 +6,7 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import DjangoModelPermissions
 
 def cook_data(response_data):
     return HttpResponse(
@@ -22,6 +23,7 @@ class EnhancedModelSerializer(ModelSerializer):
         return item
 
 class EnhancedModelViewSet(ModelViewSet):
+    permission_classes = [DjangoModelPermissions]
     @action(detail=False, methods=['GET'])
     def shortlist(self, request):
         queryset = self.get_queryset()

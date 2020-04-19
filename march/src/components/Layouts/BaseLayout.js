@@ -13,5 +13,5 @@ export default props =>
         }
         <Content>{ props.content || "Content" }</Content>
       </Layout>
-    <Footer>{ props.footer || <span>&copy; ООО &laquo;Газстройпром&raquo;, 2020</span> }</Footer>
+    <Footer>{ props.footer || <span>Класс деревянных духовых инструментов</span> }</Footer>
   </Layout>

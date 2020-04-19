@@ -38,15 +38,20 @@ export default (scope, onActions) => {
       },
       render: parseControls(),
     },
-    event: {
-      columns: ['verbose_name', 'CONTROLS'],
-      titles: {verbose_name: 'Мероприятие', },
+    task: {
+      columns: ['verbose_name', 'task_type', 'CONTROLS'],
+      titles: {verbose_name: 'Задание', },
       sorted: {
-        verbose_name: {order: 1}, 
+        task_type: {order: 1}, verbose_name: {order: 2}, 
       },
       render: parseControls(),
     },
-
+    eventPupil: {
+      columns: ['verbose_name', 'CONTROLS'],
+      titles: {verbose_name: 'Мероприятие', },
+      sorted: {},
+      render: parseControls(),
+    },
   })
 
   return dryTableSchemas()[scope] || dryTableSchemas()['default']

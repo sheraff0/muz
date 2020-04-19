@@ -8,6 +8,7 @@ from .helpers import cook_data
 
 FRONTEND_APPS = [
     'school',
+    'library',
 ]
 
 def indexedChoices(field_details):

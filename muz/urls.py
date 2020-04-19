@@ -6,6 +6,7 @@ from .api import router
 from . import views
 
 urlpatterns = [
+    path('', views.index),
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('auth/', obtain_auth_token),

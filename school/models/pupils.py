@@ -24,22 +24,38 @@ class Pupil(models.Model):
         choices=GENDERS,
         verbose_name="Пол"
     )
-
+    user_id = models.PositiveIntegerField(
+        null=True, blank=True,
+        verbose_name='ID пользователя'
+    )
     def __str__(self):
-        return '{} {}.{}. ({})'.format(
+        return '{} {}'.format(
             self.last_name,
-            (self.first_name or '?')[0],
-            (self.middle_name or '?')[0],
-            self.birth_date,
+            self.first_name
         )
     class Meta:
         verbose_name = "Ученики"
         verbose_name_plural = verbose_name
 
+class AcademicYear(models.Model):
+    academic_year = models.CharField(
+        max_length=10,
+        verbose_name='Учебный год'
+    )
+    year_start = models.DateField(
+        verbose_name="Начало года"
+    )
+    year_end = models.DateField(
+        verbose_name="Конец года"
+    )
+    def __str__(self):
+        return self.academic_year
+    class Meta:
+        verbose_name = "Учебные годы"
+        verbose_name_plural = verbose_name
+
+
 class PupilForm(models.Model):
-    ACADEMIC_YEARS = [
-        (1, '2019-2020'),
-    ]
     COURSES = [
         (1, 'предпрофессиональная'),
         (2, 'общеразвивающая '),
@@ -50,8 +66,9 @@ class PupilForm(models.Model):
         on_delete=models.SET_NULL, null=True,
         verbose_name='Ученик'
     )
-    academic_year = models.SmallIntegerField(
-        choices=ACADEMIC_YEARS,
+    academic_year = models.ForeignKey(
+        AcademicYear,
+        on_delete=models.SET_NULL, null=True, blank=True,
         verbose_name="Учебный год"
     )
     form = models.PositiveIntegerField(
@@ -65,7 +82,7 @@ class PupilForm(models.Model):
     def __str__(self):
         return "{} ({})".format(
             self.pupil.__str__(),
-            self.form,
+            self.form or "ПО",
         )
     class Meta:
         verbose_name = "Классы"

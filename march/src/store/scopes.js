@@ -9,10 +9,16 @@ import { toCamelCase, toPascalName } from '../utils'
 const pathsList = [
   // Paths to model-bound API endpoints
   {path: 'pupil'},
+  {path: 'academic_year'},
   {path: 'pupil_form'},
   {path: 'event'},
   {path: 'event_pupil'},
   {path: 'task'},
+  {path: 'person'},
+  {path: 'opus'},
+  {path: 'source'},
+  {path: 'source_index'},
+  {path: 'drill'},
   // `authData` for tokens retrieved from API
   // Current session state (i.e. token & username collected from cookies)
   // is reduced to `authContext`

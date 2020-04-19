@@ -6,6 +6,8 @@ import { scopes } from '../../store'
 const selectedScopes = [
   'pupil',
   'event',
+  'person',
+  'source',
 ]
 
 export default () =>

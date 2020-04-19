@@ -1,0 +1,45 @@
+{% load static %}
+
+{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Поющая трость</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='//fonts.googleapis.com/css?family=Tenor+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+  <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
+  <link rel="stylesheet" href="{% static "css/custom20200229.css" %}">
+<!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+  <link rel="icon" type="image/png" href="{% static "img/favicon.png" %}">
+</head>
+{% endblock head %}
+
+<body>
+  {% block hero %}
+  <div class="section hero">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <div class="row">
+            <div class="twelve columns">
+            {% block content %}
+              <h3 class="hero-heading">Добро пожаловать<br />в СНТ "Первомайское"!</h3>
+              <a class="button button-primary" href="#">Подсобка</a>
+            {% endblock content %}
+            </div>
+          </div>
+        </div>
+        <div class="one-half column face-img">
+          <img class="face-image" src="{% static "img/giraffe_clarinet.jpg" %}">
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock hero %}
+
+</body>
+</html>

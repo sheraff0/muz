@@ -1,5 +1,5 @@
+import time
 from django.db import models
-from .pupils import PupilForm
 
 class Event(models.Model):
     EVENT_TYPES = [
@@ -33,9 +33,9 @@ class Event(models.Model):
     )
     def __str__(self):
         et = self.event_type
-        return "{} {} - {}".format(
+        return "{}, {} - {}".format(
             self.event_date,
-            self.event_time,
+            self.event_time.strftime('%H:%M'),
             self.EVENT_TYPES[et-1][1]
         )
     class Meta:
@@ -50,27 +50,59 @@ class EventPupil(models.Model):
         verbose_name="Мероприятие"
     )
     pupil = models.ForeignKey(
-        PupilForm,
+        'school.PupilForm',
+        related_name="events",
         on_delete=models.SET_NULL, null=True,
         verbose_name="Ученик"
     )
     def __str__(self):
-        return self.pupil.__str__()
+        return "{} - {}".format(
+            self.pupil.__str__(),
+            self.event.__str__()
+        )
     class Meta:
         verbose_name = 'Кому'
         verbose_name_plural = verbose_name
 
 class Task(models.Model):
+    TASK_TYPES = [
+        (1, "Техническая подготовка"),
+        (2, "Изучение произведений"),
+        (3, "Знание музыки"),
+    ]
     event = models.ForeignKey(
         Event,
+        related_name="tasks",
         on_delete=models.SET_NULL, null=True,
         verbose_name="Мероприятие"
+    )
+    task_type = models.SmallIntegerField(
+        choices=TASK_TYPES,
+        null=True, blank=True,
+        verbose_name="Тип задания"
+    )
+    opus = models.ForeignKey(
+        'library.Opus',
+        on_delete=models.SET_NULL, null=True, blank=True,
+        verbose_name="Произведение"
+    )
+    drill = models.ForeignKey(
+        'library.Drill',
+        on_delete=models.SET_NULL, null=True, blank=True,
+        verbose_name="Упражнение"
     )
     task_text = models.CharField(
         max_length=200,
         null=True, blank=True,
         verbose_name="Задание"
     )
+    def __str__(self):
+        return "{} {}{}".format(
+            self.drill.__str__() if self.drill else '',
+            self.opus.__str__() if self.opus else '',
+            ' - ' + self.task_text if self.task_text else ''
+        )
     class Meta:
+        ordering = ('task_type', )
         verbose_name = 'Задания'
         verbose_name_plural = verbose_name

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'school',
+    'library',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,7 @@ WSGI_APPLICATION = 'muz.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
+#        'rest_framework.permissions.DjangoModelPermissions',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -151,8 +153,8 @@ USE_TZ = True
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'march/build'),
-#    os.path.join(BASE_DIR, 'src'),
+#    os.path.join(BASE_DIR, 'march/build'),
+    os.path.join(BASE_DIR, 'src'),
 ]
 
 STATIC_URL = '/static/'

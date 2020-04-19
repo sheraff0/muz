@@ -6,6 +6,10 @@ from .models import *
 class PupilAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(AcademicYear)
+class AcademicYearAdmin(admin.ModelAdmin):
+    pass
+
 @admin.register(PupilForm)
 class PupilFormAdmin(admin.ModelAdmin):
     pass

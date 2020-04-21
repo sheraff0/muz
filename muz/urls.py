@@ -12,4 +12,5 @@ urlpatterns = [
     path('auth/', obtain_auth_token),
     path('meta/', include('muz.meta')),
     re_path('^tycoon/.*$', views.tycoon),
+    re_path('^diary/.*$', views.diary),
 ]

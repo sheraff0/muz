@@ -6,3 +6,6 @@ def index(request):
 
 def tycoon(request):
     return render(request, 'tycoon.html', {})
+
+def diary(request):
+    return render(request, 'diary.html', {})

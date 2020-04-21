@@ -1,0 +1,22 @@
+#!/bin/bash
+rm -r static
+cd april/
+npm run build
+cd ../march/
+npm run build
+cd ..
+./manage.py collectstatic --no-input
+mkdir static/april static/march
+cp -r april/build/* static/april/
+cp -r march/build/* static/march/
+cd static/
+mv april/index.html april.html
+mv march/index.html march.html
+cp -r april/static/* .
+cp -r march/static/* .
+rm -r april/static/
+rm -r march/static/
+mv april/* .
+mv march/* .
+rmdir april march
+cd ..

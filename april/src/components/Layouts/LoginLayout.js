@@ -7,7 +7,7 @@ export default () => {
   const layoutSchema = {
     content:
       <>
-        <h1 className="page-header">Пожалуйста, подтвердите доступ к данным</h1>
+        <h1 className="page-header">Пожалуйста, введите имя и пароль</h1>
         <Row>
           <Col xs={1} sm={2} md={3} lg={4} />
           <Col flex="auto">

@@ -62,6 +62,7 @@ class EventPupil(models.Model):
             self.event.__str__()
         )
     class Meta:
+        ordering = ('-event__event_date', '-event__event_time')
         verbose_name = 'Кому'
         verbose_name_plural = verbose_name
 

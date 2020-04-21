@@ -83,4 +83,7 @@ yarn-error.log*
 march/package.json
 march/.env
 
+april/package.json
+april/.env
+
 test/

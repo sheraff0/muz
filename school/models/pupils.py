@@ -85,6 +85,7 @@ class PupilForm(models.Model):
             self.form or "ПО",
         )
     class Meta:
+        ordering = ('-academic_year__academic_year', 'pupil__last_name')
         verbose_name = "Классы"
         verbose_name_plural = verbose_name
 

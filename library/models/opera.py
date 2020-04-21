@@ -15,6 +15,7 @@ class Person(models.Model):
         verbose_name="Отчество"
     )
     birth_date = models.DateField(
+        null=True, blank=True,
         verbose_name='Дата рождения'
     )
     death_date = models.DateField(
@@ -69,7 +70,7 @@ class Opus(models.Model):
             self.composer.__str__(),
             self.opus_title,
             "(" + self.opus_subtitle + ")" if self.opus_subtitle else '',
-            "(op. " + self.opus_number + ")" if self.opus_number else '',
+            ", op. " + self.opus_number if self.opus_number else '',
         )
     class Meta:
         verbose_name = "Произведения"

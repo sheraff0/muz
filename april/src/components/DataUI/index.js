@@ -11,6 +11,7 @@ import ForeignKeySelector from './ForeignKeySelector'
 import RelatedTabs from './RelatedTabs'
 import Diary from './Diary'
 import LessonCard from './LessonCard'
+import SourcesModal from './SourcesModal'
 
 export {
   Form, FormFactory, LoginForm,
@@ -18,5 +19,5 @@ export {
   CrudCombo, CrudModal,
   inputFactory, ForeignKeySelector,
   RelatedTabs,
-  Diary, LessonCard,
+  Diary, LessonCard, SourcesModal,
 }

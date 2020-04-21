@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { BaseLayout, AuthIsBeingChecked } from '.'
@@ -11,7 +11,7 @@ export default () => {
   const layoutSchema = 
     authContextTrigger
       ? {
-        menu: <Menu />,
+//        menu: <Menu />,
         content: <ContentRouter />
       }
       : {
@@ -20,6 +20,7 @@ export default () => {
   return (
     <Router basename="/diary/muz">
       <BaseLayout {...layoutSchema} />
+      <Redirect to="/diary" />
     </Router>
   )
 }

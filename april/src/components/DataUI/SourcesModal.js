@@ -37,15 +37,25 @@ export default ({
                 className="page-header"
                 style={{ fontSize: "1.3em" }}
               >
-                <span style={{ fontStyle: "italic" }}>{source.source.source_title}&nbsp;</span>
-                { source.source.source_type &&
+                <span style={{ fontStyle: "italic" }}>{source.source?.source_title}&nbsp;</span>
+                { source.source?.source_type &&
                   <img style={{ height: "1.5em" }} src={SOURCE_TYPE_ICONS()[source.source.source_type]} />
                 }
-                { source.source.url &&
+                { source.source?.url &&
                   <a href={source.source.url} target="_blank"
                     style={{ color: "darkcyan" }}
                   >&nbsp;&rarr;&nbsp;открыть</a>
                 }
+                { source.source?.source_description && <>
+                  <br /><span style={{ fontStyle: "none", color: "grey" }}>
+                    {source.source.source_description}
+                  </span>
+                </>}
+                { source.source_fragment && <>
+                  <br /><span style={{ fontStyle: "italic", color: "darkviolet" }}>
+                    {source.source_fragment}
+                  </span>
+                </>}
               </Paragraph>
             </section>
           )

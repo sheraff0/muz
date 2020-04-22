@@ -47,7 +47,7 @@ export default ({
                   >&nbsp;&rarr;&nbsp;открыть</a>
                 }
                 { source.source?.source_description && <>
-                  <br /><span style={{ fontStyle: "none", color: "grey" }}>
+                  <br /><span style={{ fontStyle: "none", color: "grey", fontSize: ".9em" }}>
                     {source.source.source_description}
                   </span>
                 </>}

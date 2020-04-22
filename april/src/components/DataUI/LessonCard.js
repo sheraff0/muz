@@ -39,6 +39,9 @@ export default ({
         <span style={{ color: EVENT_TYPE_COLORS[data.event?.event_type] }}>
           { data.event?.event_type_verbose }
         </span>
+        { data.event?.subject === 2 &&
+          <span style={{ color: "grey", fontSize: ".9em" }}>&nbsp;(ансамбль)</span>
+        }
         { !showTask && data.event?.tasks?.length > 0 && !showAllTasks &&
           <span style={{ color: "royalblue" }} onClick={() => setShowTask(true)}>
             &nbsp;&rarr;&nbsp;задание

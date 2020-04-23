@@ -8,7 +8,7 @@ export default ({
 }) => {
   const [showSources, setShowSources] = useState(false)
   return (
-    <section style={{ marginLeft: ".2em", fontSize: ".9em" }}>
+    <section style={{ margin: "0 0 .3em.2em", fontSize: ".9em" }}>
       { task.verbose_name }
       { sources.length > 0 && <>
         <EditButton style={{ marginLeft: ".5em", fontSize: ".9em" }} text="Источники"

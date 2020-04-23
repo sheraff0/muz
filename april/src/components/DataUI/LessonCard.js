@@ -55,6 +55,7 @@ export default ({
             const sources = Array.from(new Set([
               ...(task.sources || []),
               ...(task.opus?.sources || []),
+              ...(task.opus?.composer?.sources || []),
               ...(task.drill?.sources || []),
             ].map(JSON.stringify))).map(JSON.parse)
             .sort((a, b) => a.source?.source_type - b.source?.source_type)

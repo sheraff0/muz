@@ -46,6 +46,9 @@ export default ({
               { !showAllTasks[item.id] ? 'показать' : 'скрыть' } все задания
             </span>
           </Title>
+          <Paragraph style={{ fontSize: ".9em", fontStyle: "italic", color: "silver" }}>
+            При заполнении "бумажных" дневников можно писать только названия пьес.
+          </Paragraph>
           { item?.events.map(event =>
             <LessonCard key={event.id} data={event} showAllTasks={showAllTasks[item.id]} />
           )}        

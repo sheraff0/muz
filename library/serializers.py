@@ -38,8 +38,15 @@ class SourceIndexFULLSerializer(EnhancedModelSerializer):
         model = SourceIndex
         fields = '__all__'
 
+class PersonFULLSerializer(EnhancedModelSerializer):
+    sources = SourceIndexFULLSerializer(many=True, read_only=True)
+    class Meta:
+        model = Person
+        fields = '__all__'
+
 class OpusFULLSerializer(EnhancedModelSerializer):
     sources = SourceIndexFULLSerializer(many=True, read_only=True)
+    composer = PersonFULLSerializer(read_only=True)
     class Meta:
         model = Opus
         fields = '__all__'

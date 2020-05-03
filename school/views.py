@@ -42,15 +42,30 @@ class DiaryViewSet(EnhancedModelViewSet):
         .prefetch_related(
             Prefetch(
                 'events',
-#                queryset=Event.objects.prefetch_related('tasks')
+                queryset=EventPupil.objects.prefetch_related(
+                    Prefetch(
+                        'event__tasks',
+                        queryset=Task.objects.prefetch_related('sources')
+                    )
+                )
             )
         )
     )
     serializer_class = DiarySerializer
     authentication_classes = (TokenAuthentication, )
+
     def list(self, request):
         queryset = self.get_queryset()
         filter = {'pupil__user_id': request.user.id} if request.user.id > 1 else {}
         objects = queryset.filter(**filter)
         serializer = self.get_serializer(objects, many=True)
         return Response(serializer.data)
+
+    def dispatch(self, *args, **kwargs):
+        response = super().dispatch(*args, **kwargs)
+        from django.db import connection
+        queries = connection.queries
+        print("# of Queries: {}".format(len(queries)))
+        for query in queries:
+            pass #print(query['sql'])
+        return response

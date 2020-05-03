@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from .models import *
@@ -35,7 +36,16 @@ class TaskViewSet(EnhancedModelViewSet):
     authentication_classes = (TokenAuthentication, )
 
 class DiaryViewSet(EnhancedModelViewSet):
-    queryset = PupilForm.objects.all()
+    queryset = (
+        PupilForm.objects
+        .select_related('pupil')
+        .prefetch_related(
+            Prefetch(
+                'events',
+#                queryset=Event.objects.prefetch_related('tasks')
+            )
+        )
+    )
     serializer_class = DiarySerializer
     authentication_classes = (TokenAuthentication, )
     def list(self, request):

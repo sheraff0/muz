@@ -105,6 +105,6 @@ class Task(models.Model):
             ' - ' + self.task_text if self.task_text else ''
         )
     class Meta:
-        ordering = ('task_type', )
+        ordering = ('task_type', 'id')
         verbose_name = 'Задания'
         verbose_name_plural = verbose_name

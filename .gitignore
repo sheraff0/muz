@@ -87,3 +87,5 @@ april/package.json
 april/.env
 
 test/
+
+.vscode/

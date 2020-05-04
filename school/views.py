@@ -39,17 +39,42 @@ class DiaryViewSet(EnhancedModelViewSet):
     queryset = (
         PupilForm.objects
         .select_related('pupil')
-        .prefetch_related(
-            Prefetch(
-                'events',
-                queryset=EventPupil.objects.prefetch_related(
-                    Prefetch(
-                        'event__tasks',
-                        queryset=Task.objects.prefetch_related('sources')
-                    )
+        .select_related('academic_year')
+        .prefetch_related(Prefetch(
+            'events',
+            queryset=EventPupil.objects.prefetch_related(Prefetch(
+                'event__tasks',
+                queryset=(
+                    Task.objects
+                    .prefetch_related(Prefetch(
+                        'sources',
+                        queryset=SourceIndex.objects.select_related('source')
+                    ))
+                    .prefetch_related(Prefetch(
+                        'opus',
+                        Opus.objects
+                        .prefetch_related(Prefetch(
+                            'sources',
+                            queryset=SourceIndex.objects.select_related('source')
+                        ))
+                        .prefetch_related(Prefetch(
+                            'composer',
+                            Person.objects.prefetch_related(Prefetch(
+                                'sources',
+                                queryset=SourceIndex.objects.select_related('source')
+                            ))
+                        ))
+                    ))
+                    .prefetch_related(Prefetch(
+                        'drill',
+                        Drill.objects.prefetch_related(Prefetch(
+                            'sources',
+                            queryset=SourceIndex.objects.select_related('source')
+                        ))
+                    ))
                 )
-            )
-        )
+            ))
+        ))
     )
     serializer_class = DiarySerializer
     authentication_classes = (TokenAuthentication, )
@@ -65,7 +90,7 @@ class DiaryViewSet(EnhancedModelViewSet):
         response = super().dispatch(*args, **kwargs)
         from django.db import connection
         queries = connection.queries
-        print("# of Queries: {}".format(len(queries)))
         for query in queries:
-            pass #print(query['sql'])
+            print(query['sql'])
+        print("# of Queries: {}".format(len(queries)))
         return response

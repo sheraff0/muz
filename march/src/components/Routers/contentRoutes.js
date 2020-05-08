@@ -5,6 +5,7 @@ import { scopes } from '../../store'
 
 const selectedScopes = [
   'pupil',
+  'pupilForm',
   'event',
   'person',
   'source',

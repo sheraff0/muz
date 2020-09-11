@@ -40,6 +40,7 @@ class DiaryViewSet(EnhancedModelViewSet):
         PupilForm.objects
         .select_related('pupil')
         .select_related('academic_year')
+        .filter(academic_year=2)
         .prefetch_related(Prefetch(
             'events',
             queryset=EventPupil.objects.prefetch_related(Prefetch(

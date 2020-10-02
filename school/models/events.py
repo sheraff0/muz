@@ -1,5 +1,6 @@
-import time
+# import time
 from django.db import models
+
 
 class Event(models.Model):
     EVENT_TYPES = [
@@ -33,6 +34,7 @@ class Event(models.Model):
         null=True, blank=True,
         verbose_name="Предмет"
     )
+
     def __str__(self):
         et = self.event_type
         return "{}, {} - {}".format(
@@ -40,10 +42,12 @@ class Event(models.Model):
             self.event_time.strftime('%H:%M'),
             self.EVENT_TYPES[et-1][1]
         )
+
     class Meta:
         ordering = ('-event_date', '-event_time')
         verbose_name = 'Мероприятия'
         verbose_name_plural = verbose_name
+
 
 class EventPupil(models.Model):
     event = models.ForeignKey(
@@ -57,15 +61,18 @@ class EventPupil(models.Model):
         on_delete=models.SET_NULL, null=True,
         verbose_name="Ученик"
     )
+
     def __str__(self):
         return "{} - {}".format(
             self.pupil.__str__(),
             self.event.__str__()
         )
+
     class Meta:
         ordering = ('-event__event_date', '-event__event_time')
         verbose_name = 'Кому'
         verbose_name_plural = verbose_name
+
 
 class Task(models.Model):
     TASK_TYPES = [
@@ -99,12 +106,14 @@ class Task(models.Model):
         null=True, blank=True,
         verbose_name="Задание"
     )
+
     def __str__(self):
         return "{} {}{}".format(
             self.drill.__str__() if self.drill else '',
             self.opus.__str__() if self.opus else '',
             ' - ' + self.task_text if self.task_text else ''
         )
+
     class Meta:
         ordering = ('task_type', 'id')
         verbose_name = 'Задания'

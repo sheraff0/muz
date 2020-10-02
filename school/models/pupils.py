@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Pupil(models.Model):
     GENDERS = [
         (1, "мужской"),
@@ -28,14 +29,17 @@ class Pupil(models.Model):
         null=True, blank=True,
         verbose_name='ID пользователя'
     )
+
     def __str__(self):
         return '{} {}'.format(
             self.last_name,
             self.first_name
         )
+
     class Meta:
         verbose_name = "Ученики"
         verbose_name_plural = verbose_name
+
 
 class AcademicYear(models.Model):
     academic_year = models.CharField(
@@ -48,8 +52,10 @@ class AcademicYear(models.Model):
     year_end = models.DateField(
         verbose_name="Конец года"
     )
+    
     def __str__(self):
         return self.academic_year
+
     class Meta:
         verbose_name = "Учебные годы"
         verbose_name_plural = verbose_name
@@ -79,13 +85,14 @@ class PupilForm(models.Model):
         choices=COURSES,
         verbose_name="Программа обучения"
     )
+
     def __str__(self):
         return "{} ({})".format(
             self.pupil.__str__(),
             self.form or "ПО",
         )
+
     class Meta:
         ordering = ('-academic_year__academic_year', 'pupil__last_name')
         verbose_name = "Классы"
         verbose_name_plural = verbose_name
-
